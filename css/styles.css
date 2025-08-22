@@ -2033,40 +2033,79 @@ body.dark .btn-how-to-use:hover {
   transform: translateY(-1px);
 }
 
-/* Mobile landmarks at bottom */
-.mobile-landmarks {
+/* Mobile landmarks at bottom - mimic desktop layout but compact */
+.mobile-landmarks-container {
   display: none; /* Hidden on desktop */
-  margin: 1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.mobile-landmark-item {
-  display: inline-block;
-  margin: 0.5rem 1rem 0.5rem 0;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--text-color);
-}
-
-/* Show mobile landmarks only on mobile */
 @media (max-width: 768px) {
-  .mobile-landmarks {
-    display: block;
+  .mobile-landmarks-container {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+
+  .mobile-washers-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Increased gap to push sink farther from door */
+  }
+
+  .mobile-dryers-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Push folding table to bottom */
+  }
+
+  .mobile-sink-landmark,
+  .mobile-door-landmark,
+  .mobile-folding-table-landmark {
+    background: rgba(139, 111, 71, 0.85);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 4px;
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Sink landmark - half width, pushed to left */
+  .mobile-sink-landmark {
+    height: 50px;
+    width: 50%; /* Half the width */
+    margin-right: auto; /* Push to left side */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Door landmark - thin rectangle below sink with more space */
+  .mobile-door-landmark {
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Folding table landmark - smaller and pushed to right edge */
+  .mobile-folding-table-landmark {
+    height: 48px; /* 80% of 60px */
+    width: 80%; /* 80% of current size */
+    margin-left: auto; /* Push to right side */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
 /* Dark theme support for mobile landmarks */
-[data-theme='dark'] .mobile-landmarks {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme='dark'] .mobile-landmark-item {
-  background: rgba(255, 255, 255, 0.1);
+[data-theme='dark'] .mobile-sink-landmark,
+[data-theme='dark'] .mobile-door-landmark,
+[data-theme='dark'] .mobile-folding-table-landmark {
+  background: rgba(139, 111, 71, 0.9);
+  border-color: rgba(255, 255, 255, 0.3);
 }
