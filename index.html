@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval' blob: https://www.gstatic.com https://*.gstatic.com https://*.firebaseio.com; worker-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://*.firebaseio.com https://*.cloudfunctions.net wss://*.firebaseio.com ws://localhost:* http://localhost:*; frame-src 'none'; object-src 'none';">
+    <title>Laundry Timer</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 448 512'><path d='M384 0H64C28.65 0 0 28.65 0 64v384c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V64c0-35.35-28.65-64-64-64zM224 448c-70.69 0-128-57.31-128-128s57.31-128 128-128 128 57.31 128 128-57.31 128-128 128z'/></svg>">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="preload">
+    <div class="container">
+        <header class="header-mobile">
+            <div class="header-top">
+                <h1>
+                    <svg class="washing-machine-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M384 0H64C28.65 0 0 28.65 0 64v384c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V64c0-35.35-28.65-64-64-64zM224 448c-70.69 0-128-57.31-128-128s57.31-128 128-128 128 57.31 128 128-57.31 128-128 128zM112 96c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16zm64 0c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16z"/>
+                    </svg>
+                    Herschel Laundry
+                </h1>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="disclaimer-container">
+                <button class="disclaimer-toggle" id="disclaimer-toggle" type="button">
+                    <span class="disclaimer-summary">Info about this web app</span>
+                    <svg class="expand-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </button>
+                <div class="disclaimer-content" id="disclaimer-content">
+                    <p class="disclaimer">This web app is ONLY for neighbor coordination - it does NOT make any sounds or send notifications. When you start using a washer or dryer, click START on the corresponding machine here so neighbors can see it's in use and when it will be available. This is purely a VISUAL courtesy system to save neighbors trips downstairs to find all machines occupied.<br><br>IMPORTANT: This app is silent - YOU MUST set your own phone timer for when to return. The site will NOT remind you when your laundry is done.<br><br>NO signup, NO data, NO payment, NO subscriptions. Honor system only - please only set a timer if you are actually using that machine. Made by your friendly neighbor in 111.</p>
+                </div>
+            </div>
+            
+            <!-- Last Updated for Mobile - Above how to use -->
+            <div class="last-updated mobile-last-updated" id="last-updated">
+                Last updated: Loading...
+            </div>
+            
+            <!-- How to Use Section Mobile - Above image -->
+            <div class="how-to-use-section mobile-how-to-use">
+                <button class="btn btn-how-to-use" id="how-to-use-toggle-mobile">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; margin-right: 8px;">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                        <path d="M9,12 l2,2 4,-4" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    How to Use
+                    <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-left: 8px;">
+                        <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <div class="how-to-use-content" id="how-to-use-content-mobile">
+                    <ol class="how-to-use-steps">
+                        <li><strong>Load your laundry</strong> - Put your clothes in a washer or dryer</li>
+                        <li><strong>Start your machine</strong> - Begin the actual wash/dry cycle</li>
+                        <li><strong>Click START on the machine that matches the one you're using</strong> - The painting photo below matches the one in the laundry room and serves as a guide for the layout</li>
+                        <li><strong>Set YOUR phone timer</strong> - This app is SILENT and will NOT remind you when done</li>
+                    </ol>
+                    <p class="privacy-note">This is purely a visual coordination tool. Privacy: Shows which machines are in use, never WHO is using them.</p>
+                </div>
+            </div>
+            
+            <!-- Mobile: Image below how to use -->
+            <div class="laundry-room-image mobile-image">
+                <img src="/laundry-room-painting.jpeg" alt="Laundry Room Painting" />
+            </div>
+        </header>
+
+        <main class="laundry-room">
+            <div class="washers-column">
+                <div class="machines-container">
+                    <h2>Washers</h2>
+                    
+                    <div id="machine-washer_4" class="machine-card washer-card available">
+                    <h3>Washer 4</h3>
+                    <div class="timer-display">Available</div>
+                    <div class="running-status" style="display: none;">Running...</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary start-timer" data-machine="washer_4">Start</button>
+                        <button class="btn btn-secondary custom-timer" data-machine="washer_4">Custom</button>
+                    </div>
+                </div>
+
+                <div id="machine-washer_3" class="machine-card washer-card available">
+                    <h3>Washer 3</h3>
+                    <div class="timer-display">Available</div>
+                    <div class="running-status" style="display: none;">Running...</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary start-timer" data-machine="washer_3">Start</button>
+                        <button class="btn btn-secondary custom-timer" data-machine="washer_3">Custom</button>
+                    </div>
+                </div>
+
+                <div id="machine-washer_2" class="machine-card washer-card available">
+                    <h3>Washer 2</h3>
+                    <div class="timer-display">Available</div>
+                    <div class="running-status" style="display: none;">Running...</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary start-timer" data-machine="washer_2">Start</button>
+                        <button class="btn btn-secondary custom-timer" data-machine="washer_2">Custom</button>
+                    </div>
+                </div>
+
+                <div id="machine-washer_1" class="machine-card washer-card available">
+                    <h3>Washer 1</h3>
+                    <div class="timer-display">Available</div>
+                    <div class="running-status" style="display: none;">Running...</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary start-timer" data-machine="washer_1">Start</button>
+                        <button class="btn btn-secondary custom-timer" data-machine="washer_1">Custom</button>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Room landmarks for spatial orientation -->
+                <div class="main-room-landmark sink-landmark">
+                    <span>Sink</span>
+                </div>
+                
+                <div class="main-room-landmark door-landmark">
+                    <span>Door</span>
+                </div>
+            </div>
+
+            <!-- Desktop Header - Between Columns -->
+            <div class="header-desktop">
+                <!-- Last Updated for Desktop - Above image -->
+                <div class="last-updated desktop-last-updated" id="last-updated-desktop">
+                    Last updated: Loading...
+                </div>
+                
+                <!-- Desktop: Image above content -->
+                <div class="laundry-room-image desktop-image">
+                    <img src="/laundry-room-painting.jpeg" alt="Laundry Room Painting" />
+                </div>
+                
+                <div class="header-top">
+                    <h1>
+                        <svg class="washing-machine-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M384 0H64C28.65 0 0 28.65 0 64v384c0 35.35 28.65 64 64 64h320c35.35 0 64-28.65 64-64V64c0-35.35-28.65-64-64-64zM224 448c-70.69 0-128-57.31-128-128s57.31-128 128-128 128 57.31 128 128-57.31 128-128 128zM112 96c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16zm64 0c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16z"/>
+                        </svg>
+                        Herschel Laundry
+                    </h1>
+                    <button class="theme-toggle" id="theme-toggle-desktop" aria-label="Toggle theme">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="5"/>
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="disclaimer-container">
+                <button class="disclaimer-toggle" id="disclaimer-toggle" type="button">
+                    <span class="disclaimer-summary">Info about this web app</span>
+                    <svg class="expand-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M7 10l5 5 5-5z"/>
+                    </svg>
+                </button>
+                <div class="disclaimer-content" id="disclaimer-content">
+                    <p class="disclaimer">This web app is ONLY for neighbor coordination - it does NOT make any sounds or send notifications. When you start using a washer or dryer, click START on the corresponding machine here so neighbors can see it's in use and when it will be available. This is purely a VISUAL courtesy system to save neighbors trips downstairs to find all machines occupied.<br><br>IMPORTANT: This app is silent - YOU MUST set your own phone timer for when to return. The site will NOT remind you when your laundry is done.<br><br>NO signup, NO data, NO payment, NO subscriptions. Honor system only - please only set a timer if you are actually using that machine. Made by your friendly neighbor in 111.</p>
+                </div>
+            </div>
+                
+                <!-- How to Use Section -->
+                <div class="how-to-use-section">
+                    <button class="btn btn-how-to-use" id="how-to-use-toggle">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px; margin-right: 8px;">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9,12 l2,2 4,-4" stroke="currentColor" stroke-width="2" fill="none"/>
+                        </svg>
+                        How to Use
+                        <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 16px; height: 16px; margin-left: 8px;">
+                            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="how-to-use-content" id="how-to-use-content">
+                        <ol class="how-to-use-steps">
+                            <li><strong>Load your laundry</strong> - Put your clothes in a washer or dryer</li>
+                            <li><strong>Start your machine</strong> - Begin the actual wash/dry cycle</li>
+                            <li><strong>Click START on the machine that matches the one you're using</strong> - The painting photo at the top matches the one in the laundry room and serves as a guide for the layout</li>
+                            <li><strong>Set YOUR phone timer</strong> - This app is SILENT and will NOT remind you when done</li>
+                        </ol>
+                        <p class="privacy-note">This is purely a visual coordination tool. Privacy: Shows which machines are in use, never WHO is using them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dryers-column">
+                <div class="machines-container">
+                    <h2>Dryers</h2>
+                    
+                    <div id="machine-dryer_4" class="machine-card dryer-card available">
+                    <h3>Dryer 4</h3>
+                    <div class="timer-display">Available</div>
+                    <div class="running-status" style="display: none;">Running...</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary start-timer" data-machine="dryer_4">Start</button>
+                        <button class="btn btn-secondary custom-timer" data-machine="dryer_4">Custom</button>
+                    </div>
+                </div>
+
+                <div id="machine-dryer_3" class="machine-card dryer-card available">
+                    <h3>Dryer 3</h3>
+                    <div class="timer-display">Available</div>
+                    <div class="running-status" style="display: none;">Running...</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary start-timer" data-machine="dryer_3">Start</button>
+                        <button class="btn btn-secondary custom-timer" data-machine="dryer_3">Custom</button>
+                    </div>
+                </div>
+
+                <div id="machine-dryer_2" class="machine-card dryer-card available">
+                    <h3>Dryer 2</h3>
+                    <div class="timer-display">Available</div>
+                    <div class="running-status" style="display: none;">Running...</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary start-timer" data-machine="dryer_2">Start</button>
+                        <button class="btn btn-secondary custom-timer" data-machine="dryer_2">Custom</button>
+                    </div>
+                </div>
+
+                <div id="machine-dryer_1" class="machine-card dryer-card available">
+                    <h3>Dryer 1</h3>
+                    <div class="timer-display">Available</div>
+                    <div class="running-status" style="display: none;">Running...</div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary start-timer" data-machine="dryer_1">Start</button>
+                        <button class="btn btn-secondary custom-timer" data-machine="dryer_1">Custom</button>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- Space for potential 5th dryer -->
+                <div class="dryer-spacer"></div>
+                
+                <!-- Folding table landmark -->
+                <div class="main-room-landmark table-landmark">
+                    <span>Folding Table</span>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Mobile landmarks at bottom -->
+        <div class="mobile-landmarks">
+            <div class="mobile-landmark-item">
+                <span>Sink</span>
+            </div>
+            <div class="mobile-landmark-item">
+                <span>Door</span>
+            </div>
+            <div class="mobile-landmark-item">
+                <span>Folding Table</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Custom Timer Modal -->
+    <div id="custom-timer-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Custom Timer</h3>
+                <button class="modal-close" data-action="close-custom-timer">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="custom-timer-form">
+                    <div class="form-group">
+                        <label for="custom-minutes">Timer Duration:</label>
+                        <div class="time-input-container">
+                            <input type="number" id="custom-minutes" min="1" max="120" step="1" value="30" required>
+                            <span class="time-unit">minutes</span>
+                            <div class="time-controls">
+                                <button type="button" class="time-btn time-up" id="time-increment" aria-label="Increase time">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                        <path d="M7 14l5-5 5 5z"/>
+                                    </svg>
+                                </button>
+                                <button type="button" class="time-btn time-down" id="time-decrement" aria-label="Decrease time">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                        <path d="M7 10l5 5 5-5z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="time-presets">
+                            <button type="button" class="preset-btn" data-minutes="15">15m</button>
+                            <button type="button" class="preset-btn" data-minutes="30">30m</button>
+                            <button type="button" class="preset-btn" data-minutes="45">45m</button>
+                            <button type="button" class="preset-btn" data-minutes="60">60m</button>
+                            <button type="button" class="preset-btn" data-minutes="90">90m</button>
+                        </div>
+                        <small>Range: 1-120 minutes. Tap input to type manually or use buttons.</small>
+                    </div>
+                </form>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" data-action="close-custom-timer">Cancel</button>
+                <button type="button" class="btn btn-primary" data-action="submit-custom-timer">Start Timer</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Notification Container -->
+    <div id="notification-container"></div>
+
+    <script type="module" src="js/browser-compatibility.js"></script>
+    <script type="module" src="js/firebase-service.js"></script>
+    <script type="module" src="js/timer.js"></script>
+    <script type="module" src="js/modal.js"></script>
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

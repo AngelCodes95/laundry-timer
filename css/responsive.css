@@ -1,0 +1,298 @@
+/* Mobile-First Responsive Design */
+
+/* Tablet and Small Desktop */
+@media (max-width: 1280px) {
+  .container {
+    padding: 0;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .laundry-room {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'washers dryers';
+    gap: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  .washers-column {
+    grid-area: washers;
+  }
+
+  .dryers-column {
+    grid-area: dryers;
+  }
+
+  .machine-svg {
+    width: 60px;
+    height: 72px;
+  }
+
+  .timer-display {
+    font-size: 1.2rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .courtesy-disclaimer {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .modal-content {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .courtesy-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+  .container {
+    padding: 0;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .laundry-room {
+    grid-gap: 1.5rem;
+  }
+
+  .washers-column h2,
+  .dryers-column h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .machine-card {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .machine-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .machine-svg {
+    width: 50px;
+    height: 60px;
+  }
+
+  .timer-display {
+    font-size: 1.1rem;
+    margin: 0.75rem 0;
+  }
+
+  .btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .courtesy-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  .courtesy-disclaimer {
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .modal-content {
+    width: 98%;
+    margin: 0.5rem;
+  }
+
+  .modal-header {
+    padding: 1rem;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .form-actions {
+    padding: 1rem;
+  }
+
+  #notification-container {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+  }
+
+  .notification {
+    max-width: none;
+  }
+}
+
+/* Large Screens */
+@media (min-width: 1200px) {
+  .container {
+    padding: 0;
+  }
+
+  .header {
+    margin-bottom: 4rem;
+  }
+
+  .header h1 {
+    font-size: 3rem;
+  }
+
+  .laundry-room {
+    grid-gap: 4rem;
+    max-width: none;
+    margin: 0;
+  }
+
+  .machine-card {
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .machine-svg {
+    width: 100px;
+    height: 120px;
+  }
+
+  .timer-display {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+/* Landscape Orientation on Mobile */
+@media (max-width: 1280px) and (orientation: landscape) {
+  .laundry-room {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
+
+  .machine-card {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .machine-svg {
+    width: 40px;
+    height: 48px;
+  }
+
+  .timer-display {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+
+  .machine-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .action-buttons {
+    flex-direction: row;
+    gap: 0.25rem;
+  }
+
+  .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .action-buttons,
+  .courtesy-section,
+  .modal {
+    display: none !important;
+  }
+
+  .machine-card {
+    break-inside: avoid;
+    border: 1px solid #333;
+    background: white !important;
+  }
+
+  .timer-display {
+    color: #333 !important;
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .machine-card.available {
+    border-color: #000;
+    background-color: #fff;
+  }
+
+  .machine-card.active {
+    border-color: #000;
+    background-color: #f0f0f0;
+  }
+
+  .machine-svg {
+    color: #000;
+  }
+
+  .btn-primary {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background-color: #666;
+    color: #fff;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .machine-card.active {
+    animation: none;
+  }
+}

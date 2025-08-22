@@ -1,0 +1,28 @@
+# Environment variables (contains sensitive Firebase config)
+.env*
+!.env.example
+
+# Dependencies
+node_modules/
+functions/node_modules/
+package-lock.json
+
+# Build outputs
+frontend/dist/
+dist/
+
+
+# Firebase
+.firebase/
+firebase-debug*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

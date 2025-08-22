@@ -1,0 +1,2072 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: #2c2017;
+  background-color: #f5f2e8; /* Light warm beige inspired by building walls */
+}
+
+.container {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1280px) {
+  .container {
+    padding: 0;
+  }
+}
+
+/* Header */
+.header-mobile {
+  text-align: center;
+  margin-bottom: 0;
+  position: relative;
+  display: block;
+  padding: 1rem;
+}
+
+.header-desktop {
+  grid-area: center;
+  text-align: center;
+  padding: 0;
+  position: relative;
+  display: none;
+  position: sticky;
+  top: 2rem;
+  max-width: 500px;
+  width: 100%;
+  margin: 0;
+  justify-self: center;
+  align-self: start;
+}
+
+.header-mobile h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #000;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.header-desktop h1 {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #000;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.washing-machine-icon {
+  width: 1.2em;
+  height: 1.2em;
+  fill: #000;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.disclaimer {
+  font-size: 1.1rem;
+  color: #2c2017;
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto 1rem auto;
+  line-height: 1.5;
+  background: #faf8f3; /* Warm off-white */
+  padding: 1.25rem;
+  border-radius: 8px;
+  border-left: 4px solid #4a6b8a; /* Blue highlight for light mode */
+}
+
+.header-desktop .disclaimer {
+  font-size: 1rem;
+  max-width: none;
+  padding: 1.25rem;
+  color: #000;
+}
+
+.last-updated {
+  font-size: 0.85rem;
+  color: #000; /* Black on light mode */
+  font-weight: 600; /* Make it bolder */
+}
+
+/* Laundry Room Image */
+.laundry-room-image {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.laundry-room-image img {
+  width: 100%;
+  height: auto;
+  max-width: 40vw;
+  max-height: 25vh;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #ecf0f1;
+}
+
+/* Mobile: Show mobile image, hide desktop image */
+.mobile-image {
+  display: block;
+}
+
+.desktop-image {
+  display: none;
+}
+
+/* Header Top Row */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  background: none;
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background-color: #000;
+  color: white;
+}
+
+.theme-toggle svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+}
+
+.theme-toggle .moon-icon {
+  display: none;
+}
+
+/* Dark mode styles - inspired by building's darker elements */
+body.dark {
+  background-color: #1a1611; /* True dark brown, not reddish */
+  color: #f5f2e8;
+}
+
+.dark .header-mobile h1,
+.dark .header-desktop h1 {
+  color: #fff;
+}
+
+.dark .washing-machine-icon {
+  fill: #fff;
+}
+
+.dark .disclaimer {
+  background: #2d261f; /* Dark building brown */
+  color: #f5f2e8;
+  border-left-color: #4a6b8a; /* Building's darker blue accent */
+}
+
+.dark .last-updated {
+  color: #fff; /* Bright white on dark mode */
+}
+
+.dark .theme-toggle {
+  border-color: #f5f2e8;
+  color: #f5f2e8;
+}
+
+.dark .theme-toggle:hover {
+  background-color: #f5f2e8;
+  color: #2c2017;
+}
+
+.dark .machine-card {
+  background: #2d261f; /* True dark brown, not reddish */
+  border-color: #4a453d; /* Darker brown trim */
+  color: #f5f2e8;
+}
+
+.dark .machine-card h3 {
+  color: #fff;
+}
+
+.dark .machine-card.available {
+  border-color: #2ecc71;
+  background-color: #1e3a28;
+}
+
+.dark .machine-card.available .timer-display {
+  color: #2ecc71;
+}
+
+.dark .machine-card.active {
+  border-color: #e74c3c;
+  background-color: #3d1a1a;
+}
+
+.dark .machine-card.active .timer-display {
+  color: #ff6b6b;
+}
+
+.dark .machine-card.paused {
+  border-color: #f39c12;
+  background-color: #3d2f1a;
+}
+
+.dark .machine-card.paused .timer-display {
+  color: #f39c12;
+}
+
+.dark .machine-card.paused {
+  border-color: #f39c12;
+}
+
+.dark .btn-primary {
+  background-color: #fff;
+  color: #000;
+}
+
+.dark .btn-primary:hover {
+  background-color: #ccc;
+}
+
+.dark .btn-secondary {
+  background-color: #999;
+  color: #000;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #bbb;
+}
+
+.dark .theme-toggle .sun-icon {
+  display: none;
+}
+
+.dark .theme-toggle .moon-icon {
+  display: block;
+}
+
+.dark .washers-column h2,
+.dark .dryers-column h2 {
+  color: #fff;
+  border-bottom-color: #333;
+}
+
+.dark .washers-column h2::after,
+.dark .dryers-column h2::after {
+  background: #fff;
+}
+
+/* Desktop: Hide mobile header, show desktop header */
+@media (min-width: 1281px) {
+  .header-mobile {
+    display: none;
+  }
+
+  .header-desktop {
+    display: block;
+  }
+
+  /* Desktop: Show desktop image, hide mobile image */
+  .mobile-image {
+    display: none;
+  }
+
+  .desktop-image {
+    display: block;
+  }
+
+  /* Desktop image sizing */
+  .desktop-image img {
+    max-width: 300px;
+    width: 100%;
+  }
+}
+
+/* Main Grid Layout - Desktop: 3 Columns, Mobile: 2 Columns */
+.laundry-room {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 'washers center dryers';
+  gap: 0;
+  margin: 0;
+  align-items: start;
+  width: 100%;
+  height: 100vh;
+  padding: 0;
+}
+
+.washers-column {
+  grid-area: washers;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.dryers-column {
+  grid-area: dryers;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+}
+
+.machines-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.washers-column h2,
+.dryers-column h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 3px solid #ccc;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.washers-column h2::after,
+.dryers-column h2::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #000;
+  border-radius: 2px;
+}
+
+/* Machine Cards */
+.machine-card {
+  border: 3px solid #d4c4a8;
+  padding: 0.75rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+  background: #faf8f3;
+  box-shadow: 0 2px 8px rgba(44, 32, 23, 0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  width: 200px;
+  height: 220px;
+}
+
+/* Washer and Dryer Cards - Consistent design */
+.washer-card,
+.dryer-card {
+  border-radius: 12px;
+  width: 90%;
+  height: 90px;
+  max-width: 300px;
+  min-width: 200px;
+}
+
+/* Prevent transform glitch on page load */
+.preload * {
+  transition: none !important;
+  animation: none !important;
+}
+
+.machine-card.available {
+  border-color: #27ae60;
+  background-color: #f8fff8;
+}
+
+.machine-card.active {
+  border-color: #e74c3c;
+  background-color: #fff5f5;
+  animation: pulse 2s infinite;
+}
+
+.machine-card.paused {
+  border-color: #f39c12;
+  background-color: #fffbf0;
+  animation: none;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
+  }
+  100% {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Machine Text */
+.machine-card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.timer-display {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.machine-card.available .timer-display {
+  color: #27ae60;
+}
+
+.machine-card.active .timer-display {
+  color: #e74c3c;
+}
+
+.running-status {
+  font-size: 0.9rem;
+  color: #e74c3c;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.control-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.running-text,
+.paused-text {
+  font-weight: 600;
+  color: #e74c3c;
+  text-align: center;
+}
+
+.paused-text {
+  color: #f39c12;
+}
+
+.machine-card.paused .timer-display {
+  color: #f39c12;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin: 0;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.machine-card .btn {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-primary {
+  background-color: #000;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #333;
+}
+
+.btn-secondary {
+  background-color: #666;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #444;
+}
+
+.btn-small {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  margin: 0 0.2rem;
+  border-radius: 4px;
+  min-width: 60px;
+}
+
+.btn-warning {
+  background-color: #f39c12;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #e67e22;
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+.btn-success {
+  background-color: #27ae60;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #219a52;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Courtesy Section */
+.courtesy-section {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #bdc3c7;
+  margin-top: 2rem;
+}
+
+.courtesy-section .btn {
+  margin-bottom: 1.5rem;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+}
+
+.courtesy-disclaimer {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  line-height: 1.6;
+  background: #ecf0f1;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+/* Modals */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalAppear 0.3s ease;
+}
+
+#courtesy-modal .modal-content {
+  max-width: 700px;
+  width: 95%;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Dark theme support for modal content */
+body.dark .modal-content {
+  background: #2d261f; /* Dark building brown */
+  color: #f5f2e8;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+/* Dark theme support for modal header */
+body.dark .modal-header {
+  border-bottom-color: #4a453d;
+}
+
+body.dark .modal-header h3 {
+  color: #f5f2e8;
+}
+
+body.dark .modal-close {
+  color: #d4c4a8;
+}
+
+body.dark .modal-close:hover {
+  color: #ff6b6b;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #95a5a6;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: #e74c3c;
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 0.25rem;
+  color: #7f8c8d;
+  font-size: 0.85rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+/* Dark theme support for modal body and form actions */
+body.dark .modal-body {
+  color: #f5f2e8;
+}
+
+body.dark .form-actions {
+  border-top-color: #4a453d;
+}
+
+/* Courtesy Grid */
+.courtesy-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.courtesy-machine {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.courtesy-machine h4 {
+  margin-bottom: 0.75rem;
+  color: #2c3e50;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.courtesy-timer-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1.2rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  text-align: center;
+  transition: border-color 0.2s ease;
+}
+
+.courtesy-timer-input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.courtesy-timer-input::placeholder {
+  color: #95a5a6;
+  font-size: 1rem;
+}
+
+.courtesy-update-all {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ecf0f1;
+}
+
+.btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Notifications */
+#notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1100;
+}
+
+.notification {
+  background: white;
+  border-left: 4px solid #3498db;
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease;
+  max-width: 300px;
+}
+
+.notification--error {
+  border-left-color: #e74c3c;
+}
+
+.notification--success {
+  border-left-color: #27ae60;
+}
+
+.notification--warning {
+  border-left-color: #f39c12;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Dark theme support for toast notifications */
+body.dark .notification {
+  background: #2d261f; /* Dark building brown */
+  color: #f5f2e8;
+  border-left-color: #4a6b8a; /* Building's darker blue */
+}
+
+body.dark .notification--error {
+  border-left-color: #ff6b6b;
+}
+
+body.dark .notification--success {
+  border-left-color: #2ecc71;
+}
+
+body.dark .notification--warning {
+  border-left-color: #f39c12;
+}
+
+/* Loading States */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid #f3f3f3;
+  border-top: 2px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Desktop Optimization */
+@media (min-width: 1281px) {
+  .machine-card {
+    width: 240px;
+    height: 200px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Mobile layout adjustments */
+.mobile-last-updated {
+  display: none;
+}
+
+.mobile-how-to-use {
+  display: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1280px) {
+  /* Show mobile-specific elements */
+  .mobile-last-updated {
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+    padding: 0 1rem;
+  }
+
+  .mobile-how-to-use {
+    display: block;
+    padding: 1rem;
+    margin-top: 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  .how-to-use-content {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 1rem !important;
+    max-width: 100% !important;
+  }
+
+  .how-to-use-steps {
+    padding-left: 1rem !important;
+  }
+  .container {
+    padding: 1rem;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .header-desktop {
+    display: none;
+    grid-column: span 0;
+    width: 0;
+    overflow: hidden;
+  }
+
+  .header-mobile {
+    display: block;
+  }
+
+  .laundry-room {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'washers dryers';
+    height: auto;
+  }
+
+  .washers-column {
+    grid-area: washers;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .dryers-column {
+    grid-area: dryers;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    justify-content: flex-start;
+  }
+
+  .washers-column h2,
+  .dryers-column h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .machine-card {
+    width: 140px;
+    height: 180px;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .machine-card h3 {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .timer-display {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .running-status {
+    font-size: 0.8rem;
+    gap: 0.2rem;
+    margin: 0;
+  }
+
+  .control-buttons {
+    gap: 0.3rem;
+    margin: 0;
+  }
+
+  .action-buttons {
+    gap: 0.3rem;
+    margin: 0;
+  }
+
+  .machine-card .btn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+  }
+
+  .running-text,
+  .paused-text {
+    font-size: 0.75rem;
+    margin: 0;
+  }
+
+  /* Courtesy Modal Mobile Layout */
+  .courtesy-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+    margin-top: 1rem;
+  }
+
+  .courtesy-machine {
+    padding: 0.75rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    text-align: center;
+  }
+
+  .courtesy-machine h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .courtesy-timer-input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .courtesy-update-all {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #ecf0f1;
+  }
+
+  .btn-large {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* Notification Styles */
+.notification-section {
+  margin: 0;
+  text-align: center;
+}
+
+.btn-notification {
+  background: linear-gradient(135deg, #4a6b8a 0%, #2d4a5c 100%);
+  color: #f5f2e8;
+  border: 1px solid #4a6b8a;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(74, 107, 138, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-notification:hover {
+  background: linear-gradient(135deg, #5a7b9a 0%, #3d5a6c 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 107, 138, 0.3);
+  border-color: #5a7b9a;
+}
+
+.btn-notification:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(74, 107, 138, 0.2);
+}
+
+/* Add subtle shine effect for enterprise feel */
+.btn-notification::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(245, 242, 232, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-notification:hover::before {
+  left: 100%;
+}
+
+.notification-disclaimer {
+  font-size: 0.85rem;
+  color: #4a6b8a; /* Blue highlight for light mode */
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Light mode notification button hover states */
+.btn-notification:hover {
+  background: linear-gradient(135deg, #5a7b9a 0%, #3d5a6c 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 107, 138, 0.3);
+  border-color: #5a7b9a;
+}
+
+.btn-notification:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(74, 107, 138, 0.2);
+}
+
+/* Dark mode notification button - keep brown theme */
+body.dark .btn-notification {
+  background: linear-gradient(135deg, #8b6f47 0%, #5d4a2f 100%);
+  color: #f5f2e8;
+  border-color: #8b6f47;
+  box-shadow: 0 2px 8px rgba(139, 111, 71, 0.4);
+}
+
+body.dark .btn-notification:hover {
+  background: linear-gradient(135deg, #9b8057 0%, #6d523f 100%);
+  border-color: #9b8057;
+  box-shadow: 0 4px 12px rgba(139, 111, 71, 0.5);
+}
+
+body.dark .btn-notification:active {
+  box-shadow: 0 2px 4px rgba(139, 111, 71, 0.3);
+}
+
+body.dark .notification-disclaimer {
+  color: #d4c4a8;
+}
+
+/* Notification Modal */
+#notification-modal .modal-content {
+  max-width: 500px;
+  margin: auto;
+}
+
+#notification-modal .modal-body {
+  padding: 1.5rem 1.5rem 0 1.5rem; /* Remove bottom padding so landmarks touch bottom line */
+}
+
+.privacy-disclaimer {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  border-left: 4px solid #667eea;
+}
+
+.modal-instruction {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 1rem 0 0.75rem 0;
+  text-align: center;
+}
+
+.notification-machines-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 1rem 0;
+  min-height: 300px;
+}
+
+.notification-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 300px;
+}
+
+.notification-column h4 {
+  text-align: center;
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #495057;
+  font-weight: 600;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.notification-machines-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.no-machines-type {
+  text-align: center;
+  padding: 1rem;
+  color: #999;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+/* Main Site Room Layout Landmarks - Desktop only */
+.main-room-landmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4a6b8a; /* Same blue as light mode notify button */
+  border: 2px dashed #8b6f47; /* Brown dashed lines for light mode */
+  border-radius: 4px;
+  color: #fff; /* White text on blue background */
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.main-room-landmark.sink-landmark {
+  height: 130px; /* Bigger square */
+  width: 25%; /* 30% of column width */
+  margin-right: 5%; /* No margins */
+}
+
+.main-room-landmark.door-landmark {
+  height: 20px; /* Keep thin */
+  width: 50%; /* Inner 50% of column width */
+  margin-top: 2.5rem; /* Push down towards fold */
+  margin-bottom: 0; /* No bottom margin */
+  margin-left: auto;
+  margin-right: 15%;
+}
+
+.main-room-landmark.table-landmark {
+  height: 105px; /* Triple height (35 * 3) */
+  width: 50%; /* Inner 50% of column width */
+  margin-top: 0.25rem; /* Reduced to bring it up */
+  margin-left: 15%;
+  margin-right: auto;
+}
+
+.dryer-spacer {
+  height: 45px; /* Reduced space to bring table up */
+  margin: 0.125rem 0;
+}
+
+/* Dark theme support for main landmarks */
+body.dark .main-room-landmark {
+  background: #8b6f47; /* Same light brown as dark mode notify button */
+  border-color: #4a6b8a; /* Blue dashed lines for dark mode */
+  color: #fff; /* White text on brown background */
+}
+
+.machine-option {
+  background: #fff;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 0.75rem;
+  text-align: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.machine-option:hover {
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
+}
+
+.machine-option:active {
+  transform: translateY(0);
+}
+
+.machine-option h4 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.machine-option .time-remaining {
+  font-size: 0.85rem;
+  color: #667eea;
+  font-weight: 600;
+  margin: 0.25rem 0;
+}
+
+.machine-option .machine-type {
+  font-size: 0.75rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.selection-indicator {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #667eea;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s ease;
+}
+
+.machine-option.selected {
+  border-color: #667eea;
+  background: #f8f9ff;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.machine-option.selected .selection-indicator {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.machine-option.selected .machine-type {
+  color: #667eea;
+}
+
+.machine-option.selected h4 {
+  color: #667eea;
+}
+
+.no-machines {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
+
+.no-machines p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Dark theme support for notification elements */
+body.dark .notification-section {
+  color: #e0e6ed;
+}
+
+body.dark .notification-disclaimer {
+  color: #a0a6ad;
+}
+
+body.dark .privacy-disclaimer {
+  background: #2c3e50;
+  color: #e0e6ed;
+  border-left-color: #667eea;
+}
+
+body.dark .modal-instruction {
+  color: #a0a6ad;
+}
+
+body.dark .notification-column h4 {
+  color: #e0e6ed;
+  border-bottom-color: #4a6741;
+}
+
+body.dark .no-machines-type {
+  color: #a0a6ad;
+}
+
+body.dark .machine-option {
+  background: #2c3e50;
+  border-color: #34495e;
+  color: #ecf0f1;
+}
+
+body.dark .machine-option:hover {
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+  background: #34495e;
+}
+
+body.dark .machine-option h4 {
+  color: #ecf0f1;
+}
+
+body.dark .machine-option .time-remaining {
+  color: #74b9ff;
+  font-weight: 700;
+}
+
+body.dark .machine-option .machine-type {
+  color: #95a5a6;
+}
+
+body.dark .machine-option.selected {
+  border-color: #667eea;
+  background: #34495e;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  border-width: 2px;
+}
+
+body.dark .machine-option.selected .machine-type,
+body.dark .machine-option.selected h4 {
+  color: #74b9ff;
+}
+
+body.dark .no-machines {
+  color: #a0a6ad;
+}
+
+/* Modal Room Layout Landmarks */
+.modal-landmarks-footer {
+  margin-top: 1.5rem; /* More spacing to push landmarks down to bottom line */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end; /* Push to bottom */
+  min-height: 80px; /* Ensure consistent footer height */
+}
+
+.modal-room-landmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #4a6b8a; /* Same blue as light mode notify button */
+  border: 1px dashed #8b6f47; /* Brown dashed lines for light mode */
+  border-radius: 4px;
+  color: #fff; /* White text on blue background */
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.modal-room-landmark.sink-landmark {
+  height: 40px;
+  width: 40px; /* Compact square for modal */
+  margin-bottom: 0.125rem; /* Barely above door */
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.modal-room-landmark.door-landmark {
+  height: 12px; /* Thin bar */
+  width: 60%;
+  margin-bottom: 0; /* At bottom line */
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.modal-room-landmark.table-landmark {
+  height: 50px; /* Compact height for modal */
+  width: 100%;
+  margin-bottom: 0; /* At bottom line */
+}
+
+/* Dark theme support for modal landmarks */
+body.dark .modal-room-landmark {
+  background: #8b6f47; /* Same light brown as dark mode notify button */
+  border-color: #4a6b8a; /* Blue dashed lines for dark mode */
+  color: #fff; /* White text on brown background */
+}
+
+/* Modal Footer Disclaimer */
+.modal-footer-disclaimer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #ecf0f1;
+  background: #2c3e50; /* Same blue on light and dark mode */
+  border-radius: 0 0 12px 12px;
+}
+
+.modal-footer-disclaimer .privacy-disclaimer {
+  font-size: 0.75rem;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #fff; /* White text on blue background */
+  line-height: 1.4;
+}
+
+/* Dark theme support for modal footer disclaimer */
+body.dark .modal-footer-disclaimer {
+  background: #2c3e50; /* Same blue on light and dark mode */
+  border-top-color: #4a6741;
+}
+
+body.dark .modal-footer-disclaimer .privacy-disclaimer {
+  color: #fff; /* White text on blue background */
+}
+
+/* Custom Timer Input Styles */
+.time-input-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+  flex-wrap: wrap;
+}
+
+#custom-minutes {
+  width: 80px;
+  padding: 0.5rem;
+  font-size: 1.1rem;
+  text-align: center;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  background: #fff;
+  font-weight: 600;
+}
+
+#custom-minutes:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.2);
+}
+
+.time-unit {
+  font-size: 1rem;
+  color: #666;
+  font-weight: 500;
+  margin-right: 0.5rem;
+}
+
+.time-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.time-btn {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  width: 32px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #495057;
+}
+
+.time-btn:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+  color: #212529;
+}
+
+.time-btn:active {
+  transform: scale(0.95);
+  background: #dee2e6;
+}
+
+.time-btn svg {
+  pointer-events: none;
+}
+
+.time-presets {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.preset-btn {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 20px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 48px;
+  font-weight: 500;
+}
+
+.preset-btn:hover {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.preset-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* Dark theme support for time input */
+body.dark #custom-minutes {
+  background: #34495e;
+  border-color: #4a6741;
+  color: #e0e6ed;
+}
+
+body.dark #custom-minutes:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3);
+}
+
+body.dark .time-unit {
+  color: #a0a6ad;
+}
+
+body.dark .time-btn {
+  background: #34495e;
+  border-color: #4a6741;
+  color: #e0e6ed;
+}
+
+body.dark .time-btn:hover {
+  background: #4a6741;
+  border-color: #667eea;
+}
+
+body.dark .preset-btn {
+  background: #34495e;
+  border-color: #4a6741;
+  color: #e0e6ed;
+}
+
+body.dark .preset-btn:hover,
+body.dark .preset-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+/* Collapsible Disclaimer Styles */
+.disclaimer-container {
+  margin: 1rem auto;
+  max-width: 500px;
+  width: 100%;
+}
+
+.disclaimer-toggle {
+  width: 100%;
+  background: linear-gradient(135deg, #faf8f3 0%, #f0ede4 100%);
+  border: 1px solid #d4c4a8;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #2c2017;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(44, 32, 23, 0.1);
+}
+
+.disclaimer-toggle:hover {
+  background: linear-gradient(135deg, #f0ede4 0%, #e8e2d6 100%);
+  border-color: #4a6b8a; /* Blue highlight on hover */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(74, 107, 138, 0.15);
+}
+
+.disclaimer-toggle:active {
+  transform: translateY(0);
+}
+
+.disclaimer-summary {
+  flex: 1;
+}
+
+.expand-icon {
+  transition: transform 0.3s ease;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+.disclaimer-toggle.expanded .expand-icon {
+  transform: rotate(180deg);
+}
+
+.disclaimer-content {
+  max-height: 0;
+  overflow: hidden;
+  transition:
+    max-height 0.4s ease,
+    padding 0.3s ease;
+  background: #faf8f3;
+  border-radius: 0 0 8px 8px;
+}
+
+.disclaimer-content.expanded {
+  max-height: 1000px;
+  padding: 1rem;
+  border: 1px solid #d4c4a8;
+  border-top: none;
+  box-shadow: 0 2px 4px rgba(44, 32, 23, 0.08);
+}
+
+.disclaimer-content .disclaimer {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #495057;
+}
+
+/* Dark theme support for disclaimer */
+body.dark .disclaimer-toggle {
+  background: linear-gradient(135deg, #2d261f 0%, #1a1611 100%);
+  border-color: #4a453d;
+  color: #f5f2e8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .disclaimer-toggle:hover {
+  background: linear-gradient(135deg, #4a453d 0%, #2d261f 100%);
+  border-color: #4a6b8a;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.dark .disclaimer-content {
+  background: #2d261f;
+}
+
+body.dark .disclaimer-content.expanded {
+  border-color: #4a453d;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .disclaimer-content .disclaimer {
+  color: #e0e6ed;
+}
+
+/* Mobile optimizations for time input */
+@media (max-width: 1280px) {
+  .time-input-container {
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #custom-minutes {
+    font-size: 1.2rem;
+    width: 90px;
+    padding: 0.75rem 0.5rem;
+  }
+
+  .time-btn {
+    width: 40px;
+    height: 32px;
+    touch-action: manipulation;
+  }
+
+  .time-presets {
+    gap: 0.75rem;
+  }
+
+  .preset-btn {
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    min-width: 52px;
+    touch-action: manipulation;
+  }
+
+  /* Mobile notification modal optimizations */
+  .notification-machines-layout {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .notification-column h4 {
+    font-size: 0.9rem;
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .notification-machines-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .machine-option {
+    min-height: 70px;
+    padding: 0.5rem;
+    touch-action: manipulation;
+  }
+
+  .machine-option h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .machine-option .time-remaining {
+    font-size: 0.8rem;
+  }
+
+  .no-machines-type {
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  /* Hide main site landmarks on mobile */
+  .main-room-landmark,
+  .dryer-spacer {
+    display: none;
+  }
+
+  /* Hide modal instruction text on mobile to save space */
+  .modal-instruction {
+    display: none;
+  }
+}
+
+/* How to Use Guide Styles */
+.how-to-use-section {
+  margin: 0;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.btn-how-to-use {
+  background: linear-gradient(135deg, #4a6b8a 0%, #2d4a5c 100%);
+  color: #f5f2e8;
+  border: 1px solid #4a6b8a;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(74, 107, 138, 0.25);
+  text-decoration: none;
+  min-height: 48px;
+  overflow: hidden;
+  width: auto;
+  margin: 0 auto;
+}
+
+.btn-how-to-use:hover {
+  background: linear-gradient(135deg, #5a7b9a 0%, #3d5a6c 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(74, 107, 138, 0.3);
+  border-color: #5a7b9a;
+}
+
+.how-to-use-content {
+  display: none;
+  margin-top: 1rem;
+  padding: 1.5rem;
+  background: rgba(74, 107, 138, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(74, 107, 138, 0.2);
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+.how-to-use-content.expanded {
+  display: block;
+  animation: slideDown 0.3s ease;
+}
+
+.how-to-use-steps {
+  margin: 0;
+  padding-left: 1.5rem;
+  counter-reset: step-counter;
+}
+
+.how-to-use-steps li {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+.how-to-use-steps li strong {
+  color: #4a6b8a;
+}
+
+.privacy-note {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: rgba(74, 107, 138, 0.1);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: #4a6b8a;
+  margin-bottom: 0;
+}
+
+.dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.btn-how-to-use.expanded .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px;
+  }
+}
+
+/* Auto-scroll behavior when content expands */
+.how-to-use-content.expanded {
+  scroll-margin-top: 100px;
+}
+
+/* Dark theme support for How to Use */
+body.dark .how-to-use-content {
+  background: rgba(139, 111, 71, 0.1);
+  border-color: rgba(139, 111, 71, 0.3);
+  color: #e0e6ed;
+}
+
+body.dark .how-to-use-steps li strong {
+  color: #d4c4a8;
+}
+
+body.dark .privacy-note {
+  background: rgba(139, 111, 71, 0.2);
+  color: #d4c4a8;
+}
+
+body.dark .btn-how-to-use {
+  background: linear-gradient(135deg, #8b6f47 0%, #5d4a2f 100%);
+  color: #f5f2e8;
+  border-color: #8b6f47;
+  box-shadow: 0 2px 8px rgba(139, 111, 71, 0.4);
+}
+
+body.dark .btn-how-to-use:hover {
+  background: linear-gradient(135deg, #9b8057 0%, #6d523f 100%);
+  border-color: #9b8057;
+  box-shadow: 0 4px 12px rgba(139, 111, 71, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Mobile landmarks at bottom */
+.mobile-landmarks {
+  display: none; /* Hidden on desktop */
+  margin: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-landmark-item {
+  display: inline-block;
+  margin: 0.5rem 1rem 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+/* Show mobile landmarks only on mobile */
+@media (max-width: 768px) {
+  .mobile-landmarks {
+    display: block;
+  }
+}
+
+/* Dark theme support for mobile landmarks */
+[data-theme='dark'] .mobile-landmarks {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .mobile-landmark-item {
+  background: rgba(255, 255, 255, 0.1);
+}
